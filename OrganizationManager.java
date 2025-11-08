@@ -161,6 +161,8 @@ public class OrganizationManager {
     }
 
     // The Merge method: Combines two already sorted lists into a single sorted list.
+    // This function is essential to the Merge Sort's efficiency, as it combines two already sorted sub-lists into a single fully sorted list in O(n) time.
+    // This ensures the overall O(n log n) complexity is maintained.
     private static List<EmployeeRecord> merge(List<EmployeeRecord> left, List<EmployeeRecord> right) {
         List<EmployeeRecord> result = new ArrayList<>();
         int i = 0; // Index for 'left'
