@@ -32,7 +32,8 @@ public class EmployeeRecord implements Comparable<EmployeeRecord> {
         return department;
     }
 
-    // Organize and compare from A - Z for Merge Sort 
+    // Implements the compareTo method for the Comparable interface. This is crucial for both Merge Sort and Binary Search.
+    // Which require the list to be ordered based on the 'name' field.
     @Override
     public int compareTo(EmployeeRecord other) {
         return this.name.compareTo(other.name);
