@@ -231,12 +231,49 @@ public class OrganizationManager {
         }
     }
 
-    // Placeholders for future commits
+    // Implementation Add Register
     private static void addRecord(Scanner scanner) {
-        // Implementation for Commit N.º 8, 9, 10
-        System.out.println("ADD RECORDS functionality to be implemented.");
+        System.out.println("\n--- ADD NEW EMPLOYEE RECORD ---");
+
+        // Get the name
+        System.out.print("Enter Employee Name: ");
+        String name = scanner.nextLine().trim();
+
+        // Get and valid Manager Type
+        String managerType = getValidInput(scanner, "Enter Manager Type (" + VALID_MANAGERS + "): ", VALID_MANAGERS);
+
+        // Get and valid Department
+        String department = getValidInput(scanner, "Enter Department (" + VALID_DEPARTMENTS + "): ", VALID_DEPARTMENTS);
+
+        // Create and add the register
+        if (!name.isEmpty()) {
+            EmployeeRecord newRecord = new EmployeeRecord(name, managerType, department);
+            employeeList.add(newRecord);
+            // The list should be reordered to keep the Binary Search working
+            sortList();
+            
+            System.out.println("\n✅ New record added and list re-sorted successfully:");
+            System.out.println(newRecord.toString());
+        } else {
+            System.out.println("⚠️ Error: Employee name cannot be empty. Record not added.");
+        }
     }
 
+    // Check if the user input is acording o the value list
+    private static String getValidInput(Scanner scanner, String prompt, List<String> validList) {
+        String input;
+        while (true) {
+            System.out.print(prompt);
+            input = scanner.nextLine().trim();
+            
+            if (validList.stream().anyMatch(val -> val.equalsIgnoreCase(input))) {
+                // Return the value 
+                return validList.stream().filter(val -> val.equalsIgnoreCase(input)).findFirst().get();
+            } else {
+                System.out.println("Invalid input. Must be one of: " + validList);
+            }
+        }
+    }
     private static void createHierarchy() {
         // Implementation for Commit N.º 11, 12, 13
         System.out.println("CREATE BINARY TREE functionality to be implemented.");
