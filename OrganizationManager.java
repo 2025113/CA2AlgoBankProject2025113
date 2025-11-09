@@ -298,11 +298,55 @@ public class OrganizationManager {
             root = insertLevelOrder(root, record);
         }
         
-        System.out.println("✅ Hierarchy built with first 20 records using Level-Order Insertion.");
-
+        System.out.println("\n--- Level-Order Traversal (Breadth-First Display) ---");
+        levelOrderTraversal(root);
         
-        System.out.println("Metrics and Traversal will be displayed in the next commit.");
+        int height = getHeight(root);
+        int count = countNodes(root);
+        
+        System.out.println("\n--- Tree Metrics ---");
+        System.out.println("Tree Height (Max Levels): " + height);
+        System.out.println("Total Node Count: " + count);
+        System.out.println("--------------------");
+
+}
+    private static void levelOrderTraversal(TreeNode root) {
+        if (root == null) {
+            System.out.println("Tree is empty.");
+            return;
+        }
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+            System.out.print("[" + temp.data.getName() + " - " + temp.data.getManagerType() + "]");
+            
+            if (temp.left != null) {
+                queue.add(temp.left);
+            }
+            if (temp.right != null) {
+                queue.add(temp.right);
+            }
+            System.out.print(" | ");
+        }
+        System.out.println();
     }
+    
+    private static int getHeight(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+    }
+    private static int countNodes(TreeNode root) {
+        if (root == null) {
+        return 0;
+        }
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+    
     
      // Insert a new node in Binary Tree using level-order (breadth-first).
      // This will garantee the tree keep balanced 
