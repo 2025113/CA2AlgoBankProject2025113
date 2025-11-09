@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class OrganizationManager {
 
@@ -274,8 +276,66 @@ public class OrganizationManager {
             }
         }
     }
+    // Global variable to store the Hierarchy Binary Tree
+    private static TreeNode root;
+
+    // Method to create the Hierarchy Employee
     private static void createHierarchy() {
-        // Implementation for Commit N.º 11, 12, 13
-        System.out.println("CREATE BINARY TREE functionality to be implemented.");
+        if (employeeList.size() < 20) {
+            System.out.println("Warning: Need at least 20 records to build the hierarchy (Current: " + employeeList.size() + ").");
+            System.out.println("Please add more records or ensure the file was read correctly.");
+            return;
+        }
+
+        root = null; // Restart the tree
+        System.out.println("\n--- Building Employee Hierarchy (Binary Tree) ---");
+        
+        // Here we use the actual list of employees to build the tree
+        // 20 register at least
+        
+        for (int i = 0; i < 20; i++) {
+            EmployeeRecord record = employeeList.get(i);
+            root = insertLevelOrder(root, record);
+        }
+        
+        System.out.println("✅ Hierarchy built with first 20 records using Level-Order Insertion.");
+
+        
+        System.out.println("Metrics and Traversal will be displayed in the next commit.");
+    }
+    
+     // Insert a new node in Binary Tree using level-order (breadth-first).
+     // This will garantee the tree keep balanced 
+    
+    private static TreeNode insertLevelOrder(TreeNode root, EmployeeRecord data) {
+        if (root == null) {
+            return new TreeNode(data);
+        }
+
+        // We use a Queue to track nodes in level-order
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        // While has node on queue
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+
+            // Inster to left
+            if (temp.left == null) {
+                temp.left = new TreeNode(data);
+                return root;
+            } else {
+                queue.add(temp.left);
+            }
+
+            // Insert to right
+            if (temp.right == null) {
+                temp.right = new TreeNode(data);
+                return root;
+            } else {
+                queue.add(temp.right);
+            }
+        }
+        return root;
     }
 }
