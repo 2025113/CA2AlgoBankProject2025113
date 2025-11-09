@@ -211,7 +211,8 @@ public class OrganizationManager {
         }
     }
 
-    // The recursive Binary Search algorithm.
+    // The recursive Binary Search algorithm. It relies on the list being previously sorted (by Merge Sort) to halve
+    // the search space with each recursive call, achieving O(log n) performance
     private static int binarySearch(List<EmployeeRecord> list, String targetName, int low, int high) {
         // BASE CASE 1: The search interval is invalid (element not found).
         if (low > high) {
