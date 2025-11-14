@@ -21,7 +21,7 @@ import java.util.Queue;
 public class OrganizationManager {
 
     // The main list to store employee records. It must be sorted for Binary Search efficiency.
-    private static List<EmployeeRecord> employeeList = new ArrayList<>();
+    private static List<Employee> employeeList = new ArrayList<>();
 
     // Statistics Variables to Validation (based on our choose, Bank)
     private static final List<String> VALID_MANAGERS = List.of("CEO", "Senior Manager", "Branch Manager", "Team Lead", "Relationship Manager", "Security Officer");
@@ -96,7 +96,7 @@ public class OrganizationManager {
             while ((line = br.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
                     // Add a EmployeeRecord with Manager/Dept 
-                    employeeList.add(new EmployeeRecord(line.trim(), "Unknown", "Unknown"));
+                    employeeList.add(new Employee(line.trim(), "Unknown", "Unknown"));
                 }
             }
             return !employeeList.isEmpty();
@@ -117,7 +117,7 @@ public class OrganizationManager {
         }
 
         // 1. Create a copy of the list to be sorted (to avoid modifying the list during recursion)
-        List<EmployeeRecord> sortedList = new ArrayList<>(employeeList);
+        List<Employee> sortedList = new ArrayList<>(employeeList);
 
         System.out.println("\nStarting Recursive Merge Sort...");
         
@@ -130,7 +130,7 @@ public class OrganizationManager {
         // 3. Display the first 20 names (Assignment requirement for the SORT function).
         System.out.println("\n--- Alphabetically Sorted List (First 20) ---");
         int count = 0;
-        for (EmployeeRecord record : employeeList) {
+        for (Employee record : employeeList) {
             if (count >= 20) {
                 break;
             }
@@ -142,7 +142,7 @@ public class OrganizationManager {
     }
 
     // Algoritmo Recursivo de Merge Sort. Implements the "Divide and Conquer" strategy.
-    private static List<EmployeeRecord> mergeSort(List<EmployeeRecord> list) {
+    private static List<Employee> mergeSort(List<Employee> list) {
         // BASE CASE: Recursion stops when the list has 0 or 1 element.
         if (list.size() < 2) {
             return list; 
@@ -151,8 +151,8 @@ public class OrganizationManager {
         // Division: Splits the list into two halves.
         int mid = list.size() / 2;
         
-        List<EmployeeRecord> left = new ArrayList<>(list.subList(0, mid));
-        List<EmployeeRecord> right = new ArrayList<>(list.subList(mid, list.size()));
+        List<Employee> left = new ArrayList<>(list.subList(0, mid));
+        List<Employee> right = new ArrayList<>(list.subList(mid, list.size()));
         
         // Recursion (Conquer): Calls itself to sort the halves.
         left = mergeSort(left); 
@@ -165,8 +165,8 @@ public class OrganizationManager {
     // The Merge method: Combines two already sorted lists into a single sorted list.
     // This function is essential to the Merge Sort's efficiency, as it combines two already sorted sub-lists into a single fully sorted list in O(n) time.
     // This ensures the overall O(n log n) complexity is maintained.
-    private static List<EmployeeRecord> merge(List<EmployeeRecord> left, List<EmployeeRecord> right) {
-        List<EmployeeRecord> result = new ArrayList<>();
+    private static List<Employee> merge(List<Employee> left, List<Employee> right) {
+        List<Employee> result = new ArrayList<>();
         int i = 0; // Index for 'left'
         int j = 0; // Index for 'right'
 
@@ -204,7 +204,7 @@ public class OrganizationManager {
         int index = binarySearch(employeeList, searchName, 0, employeeList.size() - 1);
 
         if (index != -1) {
-            EmployeeRecord foundRecord = employeeList.get(index);
+            Employee foundRecord = employeeList.get(index);
             System.out.println("\n--- Record Found (Binary Search) ---");
             System.out.println(foundRecord.toString()); 
             System.out.println("-------------------------------------------");
@@ -215,7 +215,7 @@ public class OrganizationManager {
 
     // The recursive Binary Search algorithm. It relies on the list being previously sorted (by Merge Sort) to halve
     // the search space with each recursive call, achieving O(log n) performance
-    private static int binarySearch(List<EmployeeRecord> list, String targetName, int low, int high) {
+    private static int binarySearch(List<Employee> list, String targetName, int low, int high) {
         // BASE CASE 1: The search interval is invalid (element not found).
         if (low > high) {
             return -1; 
@@ -249,15 +249,15 @@ public class OrganizationManager {
 
         // Create and add the register
         if (!name.isEmpty()) {
-            EmployeeRecord newRecord = new EmployeeRecord(name, managerType, department);
+            Employee newRecord = new Employee(name, managerType, department);
             employeeList.add(newRecord);
             // The list should be reordered to keep the Binary Search working
             sortList();
             
-            System.out.println("\n✅ New record added and list re-sorted successfully:");
+            System.out.println("New record added and list re-sorted successfully:");
             System.out.println(newRecord.toString());
         } else {
-            System.out.println("⚠️ Error: Employee name cannot be empty. Record not added.");
+            System.out.println("Error: Employee name cannot be empty. Record not added.");
         }
     }
 
@@ -294,7 +294,7 @@ public class OrganizationManager {
         // 20 register at least
         
         for (int i = 0; i < 20; i++) {
-            EmployeeRecord record = employeeList.get(i);
+            Employee record = employeeList.get(i);
             root = insertLevelOrder(root, record);
         }
         
@@ -351,7 +351,7 @@ public class OrganizationManager {
      // Insert a new node in Binary Tree using level-order (breadth-first).
      // This will garantee the tree keep balanced 
     
-    private static TreeNode insertLevelOrder(TreeNode root, EmployeeRecord data) {
+    private static TreeNode insertLevelOrder(TreeNode root, Employee data) {
         if (root == null) {
             return new TreeNode(data);
         }

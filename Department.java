@@ -8,14 +8,6 @@ package CA2AlgoBankProject2025113;
  *
  * @author Aliss
  */
-public class TreeNode {
-    Employee data; // The Node store one object EmployeeRecord
-    TreeNode left;
-    TreeNode right;
-
-    public TreeNode(Employee data) {
-        this.data = data;
-        this.left = null;
-        this.right = null;
-    }
+public class Department {
+    
 }
