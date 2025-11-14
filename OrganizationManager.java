@@ -23,9 +23,6 @@ public class OrganizationManager {
     // The main list to store employee records. It must be sorted for Binary Search efficiency.
     private static List<Employee> employeeList = new ArrayList<>();
 
-    // Statistics Variables to Validation (based on our choose, Bank)
-    private static final List<String> VALID_MANAGERS = List.of("CEO", "Senior Manager", "Branch Manager", "Team Lead", "Relationship Manager", "Security Officer");
-    private static final List<String> VALID_DEPARTMENTS = List.of("IT", "HR", "Finance", "Compliance", "Customer Service", "Treasury", "Credit Analysis", "Marketing");
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -235,17 +232,17 @@ public class OrganizationManager {
 
     // Implementation Add Register
     private static void addRecord(Scanner scanner) {
-        System.out.println("\n--- ADD NEW EMPLOYEE RECORD ---");
+        System.out.println("ADD NEW EMPLOYEE RECORD");
 
         // Get the name
         System.out.print("Enter Employee Name: ");
         String name = scanner.nextLine().trim();
 
         // Get and valid Manager Type
-        String managerType = getValidInput(scanner, "Enter Manager Type (" + VALID_MANAGERS + "): ", VALID_MANAGERS);
+        String managerType = getValidInput(scanner, "Enter Manager Type (" + Manager.VALID_TYPES + "): ", Manager.VALID_TYPES);
 
         // Get and valid Department
-        String department = getValidInput(scanner, "Enter Department (" + VALID_DEPARTMENTS + "): ", VALID_DEPARTMENTS);
+        String department = getValidInput(scanner, "Enter Department (" + Department.VALID_NAMES + "): ", Department.VALID_NAMES);
 
         // Create and add the register
         if (!name.isEmpty()) {
