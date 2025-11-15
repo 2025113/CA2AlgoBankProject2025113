@@ -306,7 +306,7 @@ public class OrganizationManager {
         System.out.println("Total Node Count: " + count);
         System.out.println("--------------------");
 
-}
+}       // This process is performed using a Queue
     private static void levelOrderTraversal(TreeNode root) {
         if (root == null) {
             System.out.println("Tree is empty.");
@@ -330,13 +330,14 @@ public class OrganizationManager {
         }
         System.out.println();
     }
-    
+    // This is an essential metric to assess the tree's efficiency
     private static int getHeight(TreeNode root) {
         if (root == null) {
             return 0;
         }
         return 1 + Math.max(getHeight(root.left), getHeight(root.right));
     }
+    // Counts the total number of nodes in the tree
     private static int countNodes(TreeNode root) {
         if (root == null) {
         return 0;
@@ -345,7 +346,7 @@ public class OrganizationManager {
     }
     
     
-     // Insert a new node in Binary Tree using level-order (breadth-first).
+     // Insert a new node in Binary Tree using level-order
      // This will garantee the tree keep balanced 
     
     private static TreeNode insertLevelOrder(TreeNode root, Employee data) {
