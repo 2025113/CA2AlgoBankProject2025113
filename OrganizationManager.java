@@ -78,8 +78,9 @@ public class OrganizationManager {
         scanner.close();
     }
 
-    //  Here we have methods of inicial support  
-
+    // Here we have methods of inicial support  
+    // Display the consoles menu, we defined it by using the MenuOption ENUM, 
+    // which ensures structural clarity and makes the user interface easier to manage
     private static void displayMenu() {
         System.out.println("\nDo You wish to SORT or SEARCH:");
         for (MenuOption option : MenuOption.values()) {
@@ -257,8 +258,10 @@ public class OrganizationManager {
             System.out.println("Error: Employee name cannot be empty. Record not added.");
         }
     }
-
-    // Check if the user input is acording o the value list
+    
+    // Helper method to ensure user input is valid
+    // Check if the user input is acording o the value list, thats means checks the user's entry against the VALID_NAMES/VALID_TYPES 
+    // lists stored in the dedicated Manager and Department classes
     private static String getValidInput(Scanner scanner, String prompt, List<String> validList) {
         String input;
         while (true) {
