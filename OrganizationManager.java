@@ -20,7 +20,7 @@ import java.util.Queue;
 
 public class OrganizationManager {
 
-    // The main list to store employee records. It must be sorted for Binary Search efficiency.
+    // The main list to store employee records, It must be sorted for Binary Search eficiency
     private static List<Employee> employeeList = new ArrayList<>();
 
 
@@ -31,7 +31,7 @@ public class OrganizationManager {
         System.out.print("Please enter the filename to read: ");
         String filename = scanner.nextLine();
         
-        // 1. Read the file
+        // Read the file
         if (readFile(filename)) {
             System.out.println("File read successfully. " + employeeList.size() + " records loaded.");
         } else {
@@ -104,64 +104,64 @@ public class OrganizationManager {
         }
     }
 
-    // The main entry method for the sorting functionality.
+    // The main entry method for the sorting functionality
     // Merge Sort was chosen as the required RECURSIVE algorithm because it is stable
-    // and guarantees an O(n log n) time complexity in all cases (best, average, worst).
+    // and guarantees an O(n log n) time complexity in all cases (best, average, worst)
     private static void sortList() {
         if (employeeList.isEmpty()) {
             System.out.println("The list is empty. Please load or add records first.");
             return;
         }
 
-        // 1. Create a copy of the list to be sorted (to avoid modifying the list during recursion)
+        // Create a copy of the list to be sorted 
         List<Employee> sortedList = new ArrayList<>(employeeList);
 
         System.out.println("\nStarting Recursive Merge Sort...");
         
-        // 2. Call the recursive sorting method.
-        // We update the main employeeList with the newly sorted version.
+        // Call the recursive sorting method
+        // We update the main employeeList with the newly sorted version
         employeeList = mergeSort(sortedList); 
         
         System.out.println("Merge Sort completed!");
         
-        // 3. Display the first 20 names (Assignment requirement for the SORT function).
-        System.out.println("\n--- Alphabetically Sorted List (First 20) ---");
+        // Display the first 20 names (SORT function)
+        System.out.println("Alphabetically Sorted List (First 20)");
         int count = 0;
         for (Employee record : employeeList) {
             if (count >= 20) {
                 break;
             }
-            // We display ONLY the name for the SORT output:
+            // We display ONLY the name for the SORT output
             System.out.println((count + 1) + ". " + record.getName()); 
             count++;
         }
-        System.out.println("--- End of 20 records ---");
+        System.out.println("End of 20 records");
     }
 
-    // Algoritmo Recursivo de Merge Sort. Implements the "Divide and Conquer" strategy.
+    // Implements the "Divide and Conquer" strategy.
     private static List<Employee> mergeSort(List<Employee> list) {
-        // BASE CASE: Recursion stops when the list has 0 or 1 element.
+        // Recursion stops when the list has 0 or 1 element
         if (list.size() < 2) {
             return list; 
         }
 
-        // Division: Splits the list into two halves.
+        // Splits the list into two halves
         int mid = list.size() / 2;
         
         List<Employee> left = new ArrayList<>(list.subList(0, mid));
         List<Employee> right = new ArrayList<>(list.subList(mid, list.size()));
         
-        // Recursion (Conquer): Calls itself to sort the halves.
+        // Calls itself to sort the halves
         left = mergeSort(left); 
         right = mergeSort(right); 
         
-        // Merge: Combines the two sorted sub-lists efficiently.
+        // Combines the two sorted sub-lists efficiently
         return merge(left, right);
     }
 
-    // The Merge method: Combines two already sorted lists into a single sorted list.
+    // Merge method combines two already sorted lists into a single sorted list
     // This function is essential to the Merge Sort's efficiency, as it combines two already sorted sub-lists into a single fully sorted list in O(n) time.
-    // This ensures the overall O(n log n) complexity is maintained.
+    // This ensures the overall O(n log n) complexity is maintained
     private static List<Employee> merge(List<Employee> left, List<Employee> right) {
         List<Employee> result = new ArrayList<>();
         int i = 0; // Index for 'left'
@@ -185,9 +185,9 @@ public class OrganizationManager {
         return result;
     }
     
-    // Entry method for Binary Search.
+    // Entry method for Binary Search
     // Binary Search was chosen for its O(log n) efficiency, as it is the fastest 
-    // algorithm for searching within an already sorted list.
+    // algorithm for searching within an already sorted list
     private static void searchList(Scanner scanner) {
         if (employeeList.isEmpty()) {
             System.out.println("The list is empty. Cannot search.");
@@ -213,7 +213,7 @@ public class OrganizationManager {
     // The recursive Binary Search algorithm. It relies on the list being previously sorted (by Merge Sort) to halve
     // the search space with each recursive call, achieving O(log n) performance
     private static int binarySearch(List<Employee> list, String targetName, int low, int high) {
-        // BASE CASE 1: The search interval is invalid (element not found).
+        // BASE CASE 1: The search interval is invalid (element not found)
         if (low > high) {
             return -1; 
         }
