@@ -7,5 +7,5 @@ import java.util.List;
 
 public class Manager {
     // Valid list to validate user input
-    public static final List<String> VALID_TYPES = List.of("CEO", "Senior Manager", "Branch Manager", "Team Lead", "Relationship Manager", "Security Officer");
+    public static final List<String> VALID_TYPES = List.of("CEO", "Senior Manager", "Branch Manager", "Team Lead", "Relationship Manager", "Security Officer", "Senior Analyst", "Risk Analyst Lead");
 }

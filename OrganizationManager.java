@@ -92,9 +92,22 @@ public class OrganizationManager {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (!line.trim().isEmpty()) {
-                    // Add a EmployeeRecord with Manager/Dept 
-                    employeeList.add(new Employee(line.trim(), "Unknown", "Unknown"));
+                String trimmedLine = line.trim();
+                
+                if (!trimmedLine.isEmpty()) {
+                    // Divide the line using coma 
+                    String[] parts = trimmedLine.split(",");
+                    
+                    if (parts.length >= 3) {
+                        String name = parts[0].trim();
+                        String managerType = parts[1].trim();
+                        String department = parts[2].trim();
+                        
+                        // Get the 3 fields and create the Employee
+                        employeeList.add(new Employee(name, managerType, department));
+                    } else {
+                        System.out.println("Warning: Skipping incomplete line in file: " + trimmedLine);
+                    }
                 }
             }
             return !employeeList.isEmpty();

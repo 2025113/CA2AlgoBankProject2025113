@@ -7,6 +7,6 @@ import java.util.List;
 
 public class Department {
     // Valid list to validate user input
-    public static final List<String> VALID_NAMES = List.of("IT", "HR", "Finance", "Compliance", "Customer Service", "Treasury", "Credit Analysis", "Marketing");
+    public static final List<String> VALID_NAMES = List.of("IT", "HR", "Finance", "Compliance", "Customer Service", "Treasury", "Credit Analysis", "Marketing", "Security", "Risk Analysis");
     
 }

@@ -1,0 +1,30 @@
+Clark Kent,CEO,Finance
+Bruce Wayne,Senior Manager,IT
+Diana Prince,Branch Manager,Customer Service
+Barry Allen,Team Lead,Marketing
+Arthur Curry,Risk Analyst Lead,Compliance
+Hal Jordan,Security Officer,Security
+Cyborg Stone,Senior Analyst,IT
+Alfred Pennyworth,Senior Manager,HR
+Lois Lane,Team Lead,Marketing
+Lex Luthor,Branch Manager,Treasury
+Joker Napier,Senior Manager,Security
+Harley Quinn,Team Lead,Customer Service
+Selina Kyle,Senior Analyst,Finance
+Dick Grayson,Risk Analyst Lead,Risk Analysis
+Damian Wayne,Branch Manager,Compliance
+Barbara Gordon,Senior Manager,IT
+Oliver Queen,Team Lead,Credit Analysis
+Shazam Batson,Security Officer,Security
+Reverse Zoom,Branch Manager,Treasury
+Victor Zsasz,Team Lead,HR
+Barry Allen,Branch Manager,Customer Service
+Victor Stone,Senior Manager,IT
+Koriand'r Anders,Team Lead,Marketing
+Jon Kent,Risk Analyst Lead,Risk Analysis
+Wally West,Senior Manager,Finance
+Renee Montoya,Branch Manager,Compliance
+Kate Kane,Team Lead,HR
+Zatanna Zatara,Risk Analyst Lead,Credit Analysis
+John Constantine,Senior Analyst,Security
+Pamela Isley,Team Lead,Marketing
